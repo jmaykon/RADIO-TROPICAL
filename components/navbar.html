@@ -1,0 +1,194 @@
+<nav id="mainNavbar" class="sticky top-0 z-[1000] bg-[#0a0a14]/90 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.3)] transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center h-[72px] sm:h-16">
+        <!-- Logo -->
+        <a href="#" data-page="inicio" class="flex items-center gap-3 sm:gap-2.5 no-underline flex-shrink-0 group">
+            <div class="relative flex-shrink-0">
+                <div class="absolute -inset-1.5 rounded-full border-2 border-indigo-500/20 animate-ring"></div>
+                <div class="absolute -inset-3 rounded-full border-2 border-indigo-500/10 animate-ring-reverse"></div>
+                <div class="w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center relative shadow-[0_0_30px_rgba(79,70,229,0.3)] animate-logo-pulse">
+                    <div class="absolute -inset-1 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 opacity-30 blur-md animate-logo-glow"></div>
+                    <div class="w-9 h-9 sm:w-[30px] sm:h-[30px] rounded-full bg-gradient-to-br from-indigo-500 to-indigo-900 flex items-center justify-center shadow-inner">
+                        <i class="fas fa-broadcast text-white text-lg sm:text-sm animate-wave-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col leading-none">
+                <span class="font-bold text-xl sm:text-lg text-white tracking-wide">Radio<span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Wave</span></span>
+                <span class="text-[9px] font-semibold text-white/40 uppercase tracking-[1.5px]">10.5 FM</span>
+            </div>
+        </a>
+
+        <!-- Enlaces Desktop -->
+        <div class="hidden md:flex items-center gap-1">
+            <a href="#" data-page="inicio" class="nav-link flex items-center gap-2 px-4 py-2 rounded-full text-white/60 hover:text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium relative">
+                <i class="fas fa-home text-sm"></i>
+                <span>Inicio</span>
+            </a>
+            <a href="#" data-page="programacion" class="nav-link flex items-center gap-2 px-4 py-2 rounded-full text-white/60 hover:text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium relative">
+                <i class="fas fa-calendar-alt text-sm"></i>
+                <span>Programación</span>
+            </a>
+            <a href="#" data-page="tienda" class="nav-link flex items-center gap-2 px-4 py-2 rounded-full text-white/60 hover:text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium relative">
+                <i class="fas fa-shopping-bag text-sm"></i>
+                <span>Tienda</span>
+            </a>
+            <a href="#" data-page="contactos" class="nav-link flex items-center gap-2 px-4 py-2 rounded-full text-white/60 hover:text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium relative">
+                <i class="fas fa-headset text-sm"></i>
+                <span>Contactos</span>
+            </a>
+        </div>
+
+        <!-- Acciones -->
+        <div class="flex items-center gap-3 sm:gap-2">
+            <div class="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-live-pulse"></span>
+                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wide hidden sm:inline">En vivo</span>
+            </div>
+            <button id="menuToggle" class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-white/5 transition-colors duration-300" aria-label="Menú">
+                <span class="menu-bar w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+                <span class="menu-bar w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+                <span class="menu-bar w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ====== MENÚ MÓVIL CORREGIDO ====== -->
+    <div id="mobileMenu" class="fixed top-0 right-[-100%] w-full max-w-sm h-screen z-[2000] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] border-l border-white/5 overflow-y-auto md:hidden" 
+         style="background: rgba(10, 10, 20, 0.98) !important; backdrop-filter: blur(20px) !important; -webkit-backdrop-filter: blur(20px) !important;">
+        <div class="p-6 flex flex-col h-full" style="background: transparent !important;">
+            <!-- Header -->
+            <div class="flex items-center gap-3 pb-5 border-b border-white/5 mb-4" style="background: transparent !important;">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-broadcast text-white text-sm"></i>
+                </div>
+                <span class="flex-1 text-lg font-bold text-white">RadioWave</span>
+                <button id="mobileMenuClose" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all duration-300 flex items-center justify-center">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Enlaces -->
+            <div class="flex flex-col gap-1 flex-1 py-2" style="background: transparent !important;">
+                <a href="#" data-page="inicio" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium">
+                    <i class="fas fa-home w-5 text-center text-lg"></i>
+                    <span>Inicio</span>
+                </a>
+                <a href="#" data-page="programacion" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium">
+                    <i class="fas fa-calendar-alt w-5 text-center text-lg"></i>
+                    <span>Programación</span>
+                </a>
+                <a href="#" data-page="tienda" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium">
+                    <i class="fas fa-shopping-bag w-5 text-center text-lg"></i>
+                    <span>Tienda</span>
+                </a>
+                <a href="#" data-page="contactos" class="mobile-link flex items-center gap-3 px-4 py-3 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300 text-sm font-medium">
+                    <i class="fas fa-headset w-5 text-center text-lg"></i>
+                    <span>Contactos</span>
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <div class="pt-4 border-t border-white/5" style="background: transparent !important;">
+                <span class="flex items-center gap-2 text-xs text-white/40">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-live-pulse"></span>
+                    En vivo 24/7
+                </span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ====== ESTILOS INLINE ====== -->
+<style>
+    /* Animaciones del navbar */
+    @keyframes linkActive {
+        0% { width: 0; opacity: 0; }
+        100% { width: 20px; opacity: 1; }
+    }
+
+    @keyframes loaderSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .nav-link.active-link::after {
+        content: '';
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 2px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, #4f46e5, #7c3aed);
+        animation: linkActive 0.3s ease;
+    }
+
+    .mobile-link.active-link {
+        background: rgba(79, 70, 229, 0.2) !important;
+        color: white !important;
+        border: 1px solid rgba(79, 70, 229, 0.15) !important;
+    }
+
+    #menuToggle.active .menu-bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    #menuToggle.active .menu-bar:nth-child(2) {
+        opacity: 0;
+    }
+    #menuToggle.active .menu-bar:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .scrolled {
+        background: rgba(10, 10, 20, 0.98) !important;
+        box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* ========== FONDO DEL MENÚ MÓVIL ========== */
+    #mobileMenu {
+        background: rgba(10, 10, 20, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+    }
+
+    #mobileMenu .mobile-menu-container {
+        background: transparent !important;
+    }
+
+    #mobileMenu .mobile-link {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    #mobileMenu .mobile-link:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+        color: white !important;
+    }
+
+    #mobileMenu .mobile-link.active-link {
+        background: rgba(79, 70, 229, 0.2) !important;
+        color: white !important;
+        border: 1px solid rgba(79, 70, 229, 0.15) !important;
+    }
+
+    #mobileMenu .mobile-menu-close {
+        background: rgba(255, 255, 255, 0.06) !important;
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    #mobileMenu .mobile-menu-close:hover {
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: white !important;
+    }
+
+    /* Asegurar que el menú tenga fondo cuando está abierto */
+    #mobileMenu.open {
+        right: 0 !important;
+        background: rgba(10, 10, 20, 0.98) !important;
+    }
+
+    /* Evitar que el contenido se vea transparente */
+    #mobileMenu .p-6 {
+        background: transparent !important;
+    }
+</style>

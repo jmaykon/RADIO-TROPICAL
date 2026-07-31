@@ -1,0 +1,21 @@
+mi-radio/
+├── index.html
+├── pages/
+│   ├── inicio.html
+│   ├── programacion.html
+│   ├── tienda.html
+│   └── contactos.html
+├── css/
+│   └── custom.css          ← Solo animaciones y efectos especiales
+├── js/
+│   ├── app.js              ← Punto de entrada
+│   ├── router.js           ← Navegación SPA
+│   ├── radio.js            ← Control de audio
+│   ├── navbar.js           ← Control del navbar
+│   ├── footer.js           ← Footer flotante
+│   └── pages.js            ← Funcionalidades por página
+├── components/
+│   ├── navbar.html
+│   └── footer-fab.html
+└── assets/
+    └── img/

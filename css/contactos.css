@@ -1,0 +1,323 @@
+/* ========================================
+   CONTACTOS - Estilos con mapa grande
+   ======================================== */
+
+.contactos {
+    padding: 60px 0;
+    background: white;
+}
+
+/* ========== TARJETAS DE CONTACTO ========== */
+.contactos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contacto-card {
+    background: #f8fafc;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contacto-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.contacto-card .icono {
+    font-size: 40px;
+    color: #4f46e5;
+    margin-bottom: 12px;
+}
+
+.contacto-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.contacto-card p {
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.contacto-card p i {
+    width: 24px;
+    color: #4f46e5;
+}
+
+/* ========== MAPA GRANDE ========== */
+.ubicacion-card {
+    grid-column: span 1;
+}
+
+@media (min-width: 992px) {
+    .ubicacion-card {
+        grid-column: span 2;
+    }
+}
+
+.mapa-container {
+    margin-top: 16px;
+    background: #eef2ff;
+    padding: 8px;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 280px;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+}
+
+.mapa-container.expandido {
+    height: 450px;
+}
+
+.mapa-container iframe {
+    border: 0;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    transition: height 0.5s ease;
+}
+
+.mapa-expand-hint {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.mapa-container:hover .mapa-expand-hint {
+    opacity: 1;
+}
+
+.mapa-expand-hint i {
+    font-size: 14px;
+}
+
+/* ========== BOTONES DE CONTACTO ========== */
+.contacto-botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn-email {
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-email:hover {
+    background: #e0e7ff;
+    transform: scale(1.05);
+}
+
+/* ========== HORARIOS ========== */
+.horarios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    color: #64748b;
+    margin-top: 10px;
+}
+
+.horarios-grid .destacado {
+    grid-column: span 2;
+    background: #eef2ff;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+    color: #4f46e5;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+/* ========== FORMULARIO ========== */
+.formulario-contacto {
+    margin-top: 50px;
+    background: #f8fafc;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+}
+
+.formulario-contacto h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.formulario-contacto .sub {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.formulario-contacto form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: white;
+}
+
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.formulario-contacto input[grid="span2"],
+.formulario-contacto textarea[grid="span2"] {
+    grid-column: span 2;
+}
+
+.btn-enviar {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    grid-column: span 2;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-enviar:hover {
+    background: #4338ca;
+    transform: scale(1.01);
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .contactos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .ubicacion-card {
+        grid-column: 1;
+    }
+    
+    .mapa-container {
+        height: 220px;
+    }
+    
+    .mapa-container.expandido {
+        height: 350px;
+    }
+    
+    .formulario-contacto {
+        padding: 24px;
+    }
+    
+    .formulario-contacto form {
+        grid-template-columns: 1fr;
+    }
+    
+    .formulario-contacto input[grid="span2"],
+    .formulario-contacto textarea[grid="span2"] {
+        grid-column: 1;
+    }
+    
+    .btn-enviar {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacto-card {
+        padding: 20px;
+    }
+    
+    .mapa-container {
+        height: 180px;
+    }
+    
+    .mapa-container.expandido {
+        height: 280px;
+    }
+    
+    .contacto-botones {
+        flex-direction: column;
+    }
+    
+    .contacto-botones button {
+        justify-content: center;
+    }
+    
+    .formulario-contacto {
+        padding: 16px;
+    }
+    
+    .horarios-grid {
+        grid-template-columns: 1fr 1fr;
+        font-size: 13px;
+    }
+}
