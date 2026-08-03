@@ -1,0 +1,177 @@
+<footer class="floating-footer" id="floatingFooter">
+    <div class="inner">
+        <!-- Izquierda: Logo + Info -->
+        <div class="logo-area">
+            <div class="relative flex-shrink-0">
+                <img src="assets/img/RT.png"
+                    class="logo-img"
+                    alt="Radio Tropical"
+                    onerror="this.src='https://placehold.co/150/06b6d4/ffffff?text=RT'">
+                <div class="logo-glow"></div>
+            </div>
+            <div class="flex flex-col leading-tight truncate min-w-0">
+                <h4 class="station-name">Radio Tropical 87.9 FM</h4>
+                <div class="status-indicator">
+                    <span id="liveIndicatorFloat" class="status-dot-float"></span>
+                    <span id="statusTextFloat" class="status-text-float">Señal Digital</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Derecha: Botón Play -->
+        <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0 pl-1">
+            <span class="action-label hidden sm:block">Escuchar ahora</span>
+            <button id="fabRadio" class="play-btn" aria-label="Reproducir / Pausar">
+                <span id="btnIconContainer" class="flex items-center justify-center">
+                    <i id="fabIcon" class="fas fa-play"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function() {
+        "use strict";
+        
+        if (window._footerInitialized) return;
+        window._footerInitialized = true;
+
+        // Esperar a que el DOM esté listo
+        setTimeout(function() {
+            const fabRadio = document.getElementById('fabRadio');
+            const fabIcon = document.getElementById('fabIcon');
+            const liveIndicatorFloat = document.getElementById('liveIndicatorFloat');
+            const statusTextFloat = document.getElementById('statusTextFloat');
+
+            if (!fabRadio) {
+                console.warn('Reproductor flotante no encontrado');
+                return;
+            }
+
+            let isPlaying = false;
+            let currentTrackIndex = 0;
+            let audioPlayer = null;
+
+            // --- URLs de stream ---
+            const streams = [
+                { title: 'Ritmo Caribeño', artist: 'Salsa · Merengue', url: 'https://stream-152.zeno.fm/2xr1kh0qp0hvv' },
+                { title: 'Salsa Brava', artist: 'Grupo Niche', url: 'https://stream-153.zeno.fm/7r1kgh0qp0hvv' },
+                { title: 'El Merengue', artist: 'Juan Luis Guerra', url: 'https://stream-154.zeno.fm/8s2lih1rq0hvv' },
+                { title: 'Bachata Rosa', artist: 'Romeo Santos', url: 'https://stream-156.zeno.fm/0u4nkj3ts0hvv' }
+            ];
+
+            function getAudioPlayer() {
+                if (!audioPlayer) {
+                    audioPlayer = document.getElementById('radioPlayer');
+                    if (!audioPlayer) {
+                        audioPlayer = document.createElement('audio');
+                        audioPlayer.id = 'radioPlayer';
+                        audioPlayer.preload = 'none';
+                        document.body.appendChild(audioPlayer);
+                    }
+                }
+                return audioPlayer;
+            }
+
+            function updateFloatingStatus() {
+                if (liveIndicatorFloat) {
+                    if (isPlaying) {
+                        liveIndicatorFloat.classList.add('on');
+                    } else {
+                        liveIndicatorFloat.classList.remove('on');
+                    }
+                }
+                if (statusTextFloat) {
+                    if (isPlaying) {
+                        statusTextFloat.classList.add('on');
+                        statusTextFloat.textContent = 'En Vivo';
+                    } else {
+                        statusTextFloat.classList.remove('on');
+                        statusTextFloat.textContent = 'Señal Digital';
+                    }
+                }
+            }
+
+            function changeTrack(direction) {
+                if (direction === 'next') {
+                    currentTrackIndex = (currentTrackIndex + 1) % streams.length;
+                } else if (direction === 'prev') {
+                    currentTrackIndex = (currentTrackIndex - 1 + streams.length) % streams.length;
+                }
+                
+                const track = streams[currentTrackIndex];
+                const player = getAudioPlayer();
+                player.src = track.url;
+                player.load();
+                
+                if (isPlaying) {
+                    player.play().catch(e => console.log('Error:', e));
+                    if (fabIcon) {
+                        fabIcon.className = 'fas fa-spinner fa-pulse';
+                        setTimeout(() => { 
+                            if (isPlaying) fabIcon.className = 'fas fa-pause'; 
+                        }, 400);
+                    }
+                }
+                
+                document.dispatchEvent(new CustomEvent('trackChanged', { detail: { track, index: currentTrackIndex } }));
+            }
+
+            function togglePlay() {
+                const player = getAudioPlayer();
+                isPlaying = !isPlaying;
+                
+                if (isPlaying) {
+                    if (!player.src) {
+                        const track = streams[currentTrackIndex];
+                        player.src = track.url;
+                        player.load();
+                    }
+                    
+                    player.play()
+                        .then(() => {
+                            if (fabIcon) fabIcon.className = 'fas fa-pause';
+                            updateFloatingStatus();
+                            if (window._trackInterval) clearInterval(window._trackInterval);
+                            window._trackInterval = setInterval(() => changeTrack('next'), 15000);
+                        })
+                        .catch(() => {
+                            if (fabIcon) fabIcon.className = 'fas fa-pause';
+                            updateFloatingStatus();
+                            if (window._trackInterval) clearInterval(window._trackInterval);
+                            window._trackInterval = setInterval(() => changeTrack('next'), 15000);
+                        });
+                } else {
+                    player.pause();
+                    if (fabIcon) fabIcon.className = 'fas fa-play';
+                    updateFloatingStatus();
+                    if (window._trackInterval) {
+                        clearInterval(window._trackInterval);
+                        window._trackInterval = null;
+                    }
+                }
+                
+                document.dispatchEvent(new CustomEvent('playStateChanged', { detail: { isPlaying } }));
+            }
+
+            // Evento click
+            fabRadio.addEventListener('click', togglePlay);
+
+            // Inicializar estado
+            updateFloatingStatus();
+
+            // --- Exponer controles globales ---
+            window.radioControls = {
+                toggle: togglePlay,
+                play: togglePlay,
+                pause: function() { if (isPlaying) togglePlay(); },
+                next: function() { changeTrack('next'); },
+                prev: function() { changeTrack('prev'); },
+                getState: function() { return { isPlaying, currentTrack: streams[currentTrackIndex] }; }
+            };
+
+            console.log('📻 Reproductor flotante inicializado');
+        }, 100); // Pequeño delay para asegurar que el DOM esté listo
+    })();
+</script>

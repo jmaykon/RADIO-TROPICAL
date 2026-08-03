@@ -1,42 +1,84 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>RadioWave · Radio Online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Radio Tropical 87.9 FM · Mapiri</title>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#050509',
+                            card: '#0a0a14',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     
-    <!-- CSS Personalizado (Estilo Radio) -->
-    <link rel="stylesheet" href="css/custom.css" />
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
     
-    <!-- Favicon -->
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="min-h-screen">
+<body class="bg-[#050509] text-slate-100 font-sans min-h-screen flex flex-col antialiased">
 
     <!-- ====== NAVBAR ====== -->
-    <div id="navbar"></div>
+    <header class="w-full relative z-40">
+        <div id="navbar" hx-get="components/navbar.html" hx-trigger="load" hx-swap="innerHTML"></div>
+    </header>
 
-    <!-- ====== CONTENIDO DINÁMICO ====== -->
-    <main id="mainContent">
-        <!-- El contenido se carga dinámicamente -->
+    <!-- ====== MENÚ MÓVIL ====== -->
+    <div id="mobileMenu" class="fixed inset-y-0 right-0 w-72 bg-[#0a0a14] border-l border-white/10 z-[100] transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col">
+        <div class="flex items-center justify-between p-5 border-b border-white/10">
+            <span class="font-heading text-lg font-bold tracking-wider text-white">RADIO <span class="text-cyan-400">TROPICAL</span></span>
+            <button id="mobileMenuClose" class="text-gray-400 hover:text-white p-2 rounded-lg bg-white/5 border border-white/10">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col p-6 space-y-4 flex-grow overflow-y-auto">
+            <a href="#" data-page="inicio" class="mobile-link text-gray-300 hover:text-cyan-400 font-medium py-2 border-b border-white/5 transition-colors">Inicio</a>
+            <a href="#" data-page="programacion" class="mobile-link text-gray-300 hover:text-cyan-400 font-medium py-2 border-b border-white/5 transition-colors">Programación</a>
+            <a href="#" data-page="contactos" class="mobile-link text-gray-300 hover:text-cyan-400 font-medium py-2 border-b border-white/5 transition-colors">Contacto</a>
+        </nav>
+        <div class="p-6 border-t border-white/10 text-center text-xs text-gray-500">
+            Mapiri, La Paz - Bolivia 📡 87.9 FM
+        </div>
+    </div>
+
+    <!-- ====== CONTENIDO PRINCIPAL ====== -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 md:py-10 pb-32">
+        <div id="pageContent" hx-get="pages/inicio.html" hx-trigger="load" hx-swap="innerHTML">
+            <!-- Contenido cargado vía HTMX -->
+        </div>
     </main>
 
-    <!-- ====== FOOTER FAB ====== -->
-    <div id="footerFab"></div>
+    <!-- ====== FOOTER FLOTANTE (REPRODUCTOR) ====== -->
+    <div id="footerFab" hx-get="components/footer.html" hx-trigger="load" hx-swap="innerHTML"></div>
 
-    <!-- ====== AUDIO ====== -->
+    <!-- ====== REPRODUCTOR DE AUDIO GLOBAL ====== -->
     <audio id="radioPlayer" preload="none"></audio>
 
-    <!-- ====== JAVASCRIPT MODULAR ====== -->
-    <script type="module" src="js/app.js"></script>
+    <!-- ====== JAVASCRIPT ====== -->
+    <script src="js/app.js"></script>
 </body>
 </html>
