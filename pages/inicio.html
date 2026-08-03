@@ -1,207 +1,96 @@
 <div class="space-y-8">
-    <!-- Hero -->
-    <div class="space-y-8">
-        <!-- Hero con imagen -->
-        <section
-            class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900/30 via-[#0a0a14] to-cyan-900/20 border border-white/5 p-8 md:p-12">
-            <div
-                class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
-            <div
-                class="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl"></div>
-
-            <div
-                class="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                <!-- Contenido izquierdo -->
-                <div class="flex-1">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span
-                            class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-cyan-300 text-xs font-bold uppercase tracking-wider">
-                            📡 En Vivo
-                        </span>
-                    </div>
-                    <h1
-                        class="text-4xl md:text-5xl font-heading font-bold tracking-tight">
-                        Radio Tropical <br class="sm:hidden" />
-                        <span class="text-cyan-400">87.9 FM</span>
-                    </h1>
-                    <p class="text-gray-400 text-lg max-w-2xl mt-4">
-                        Sabor, ritmo y tradición desde Mapiri, La Paz.<br
-                            class="hidden sm:block" />
-                        Conectando comunidades con la mejor música tropical.
-                    </p>
-                    <div class="flex flex-wrap gap-4 mt-6">
-                        <button id="heroPlayBtn"
-                            class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-400 rounded-full font-bold text-white hover:scale-105 transition-transform shadow-lg shadow-cyan-500/30 flex items-center gap-2">
-                            <i class="fas fa-play"></i> Escuchar ahora
-                        </button>
-                        <a href="#" data-page="programacion"
-                            class="px-6 py-3 bg-white/5 border border-white/10 rounded-full font-medium text-gray-300 hover:bg-white/10 transition-colors flex items-center gap-2">
-                            <i class="far fa-clock"></i> Ver programación
-                        </a>
-                    </div>
+    <!-- Hero con imagen -->
+    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900/30 via-[#0a0a14] to-cyan-900/20 border border-white/5 p-6 sm:p-8 md:p-12">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+            <!-- Contenido izquierdo -->
+            <div class="flex-1 text-center md:text-left">
+                <div class="flex items-center gap-3 mb-4 justify-center md:justify-start">
+                    <span class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-cyan-300 text-xs font-bold uppercase tracking-wider">
+                        📡 En Vivo
+                    </span>
                 </div>
-
-                <!-- Imagen derecha -->
-                <div class="flex-shrink-0">
-                    <div
-                        class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-2xl overflow-hidden shadow-2xl shadow-cyan-500/20 border border-white/10">
-                        <img
-                            src="assets/img/radio-studio.jpg"
-                            alt="Radio Tropical Studio"
-                            class="w-full h-full object-cover"
-                            onerror="this.src='https://placehold.co/300/06b6d4/ffffff?text=Radio+Tropical'" />
-                        <!-- Overlay sutil -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-[#0a0a14]/60 to-transparent"></div>
-                        <!-- Badge flotante -->
-                        <div
-                            class="absolute bottom-3 left-3 right-3 flex items-center gap-2 bg-black/60 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/10">
-                            <span
-                                class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                            <span class="text-xs text-white font-medium">En vivo
-                                ahora</span>
-                        </div>
-                    </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold tracking-tight">
+                    Radio Tropical <br class="sm:hidden" />
+                    <span class="text-cyan-400">87.9 FM</span>
+                </h1>
+                <p class="text-gray-400 text-base sm:text-lg max-w-2xl mt-4 mx-auto md:mx-0">
+                    Sabor, ritmo y tradición desde Mapiri, La Paz.<br class="hidden sm:block" />
+                    Conectando comunidades con la mejor música tropical.
+                </p>
+                <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 justify-center md:justify-start">
+                    <button id="heroPlayBtn" class="px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-cyan-600 to-cyan-400 rounded-full font-bold text-white hover:scale-105 transition-transform shadow-lg shadow-cyan-500/30 flex items-center gap-2 text-sm sm:text-base">
+                        <i class="fas fa-play"></i> Escuchar ahora
+                    </button>
+                    <a href="#" data-page="programacion" class="px-5 sm:px-6 py-2.5 sm:py-3 bg-white/5 border border-white/10 rounded-full font-medium text-gray-300 hover:bg-white/10 transition-colors flex items-center gap-2 text-sm sm:text-base">
+                        <i class="far fa-clock"></i> Ver programación
+                    </a>
                 </div>
             </div>
-        </section>
-
-        <!-- Estadísticas -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div
-                class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 text-center">
-                <span class="text-2xl font-bold text-cyan-400">24/7</span>
-                <p class="text-gray-400 text-sm">Transmisión</p>
-            </div>
-            <div
-                class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 text-center">
-                <span class="text-2xl font-bold text-cyan-400">87.9</span>
-                <p class="text-gray-400 text-sm">FM</p>
-            </div>
-            <div
-                class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 text-center">
-                <span class="text-2xl font-bold text-cyan-400">Mapiri</span>
-                <p class="text-gray-400 text-sm">Cobertura</p>
-            </div>
-            <div
-                class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 text-center">
-                <span class="text-2xl font-bold text-cyan-400">🎵</span>
-                <p class="text-gray-400 text-sm">Tropical</p>
-            </div>
-        </div>
-
-        <!-- Programas destacados -->
-        <div class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6">
-            <h3 class="font-heading text-xl font-bold mb-4">📻 Programas
-                destacados</h3>
-            <div class="space-y-3">
-                <div
-                    class="flex items-center justify-between p-3 bg-white/5 rounded-xl">
-                    <div>
-                        <span class="font-medium text-white">Ritmo
-                            Caribeño</span>
-                        <p class="text-gray-400 text-sm">Salsa · Merengue ·
-                            Bachata</p>
+            
+            <!-- Imagen derecha -->
+            <div class="flex-shrink-0 mt-4 md:mt-0">
+                <div class="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-2xl overflow-hidden shadow-2xl shadow-cyan-500/20 border border-white/10">
+                    <img 
+                        src="assets/img/radio-studio.jpg" 
+                        alt="Radio Tropical Studio" 
+                        class="w-full h-full object-cover"
+                        onerror="this.src='https://placehold.co/300/06b6d4/ffffff?text=Radio+Tropical'"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a14]/60 to-transparent"></div>
+                    <div class="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3 flex items-center gap-1.5 sm:gap-2 bg-black/60 backdrop-blur-sm rounded-full px-2 sm:px-3 py-1 sm:py-1.5 border border-white/10">
+                        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        <span class="text-[10px] sm:text-xs text-white font-medium">En vivo ahora</span>
                     </div>
-                    <span class="text-xs text-cyan-400">En vivo</span>
-                </div>
-                <div
-                    class="flex items-center justify-between p-3 bg-white/5 rounded-xl">
-                    <div>
-                        <span class="font-medium text-white">Despertar
-                            Tropical</span>
-                        <p class="text-gray-400 text-sm">Música para empezar el
-                            día</p>
-                    </div>
-                    <span class="text-xs text-gray-500">07:00 AM</span>
-                </div>
-                <div
-                    class="flex items-center justify-between p-3 bg-white/5 rounded-xl">
-                    <div>
-                        <span class="font-medium text-white">Salsa
-                            Clásica</span>
-                        <p class="text-gray-400 text-sm">Los mejores éxitos de
-                            salsa</p>
-                    </div>
-                    <span class="text-xs text-gray-500">10:30 AM</span>
                 </div>
             </div>
         </div>
-    </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const heroPlayBtn = document.getElementById('heroPlayBtn');
-        if (heroPlayBtn) {
-            heroPlayBtn.addEventListener('click', function() {
-                if (window.radioControls) {
-                    window.radioControls.toggle();
-                } else {
-                    const fabBtn = document.getElementById('fabRadio');
-                    if (fabBtn) fabBtn.click();
-                }
-            });
-        }
-    });
-</script>
-
-
-
+    </section>
 
     <!-- Estadísticas -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div
-            class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 text-center">
-            <span class="text-2xl font-bold text-cyan-400">24/7</span>
-            <p class="text-gray-400 text-sm">Transmisión</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div class="bg-[#0a0a14] border border-white/5 rounded-2xl p-4 sm:p-6 text-center">
+            <span class="text-xl sm:text-2xl font-bold text-cyan-400">24/7</span>
+            <p class="text-gray-400 text-xs sm:text-sm">Transmisión</p>
         </div>
-        <div
-            class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 text-center">
-            <span class="text-2xl font-bold text-cyan-400">87.9</span>
-            <p class="text-gray-400 text-sm">FM</p>
+        <div class="bg-[#0a0a14] border border-white/5 rounded-2xl p-4 sm:p-6 text-center">
+            <span class="text-xl sm:text-2xl font-bold text-cyan-400">87.9</span>
+            <p class="text-gray-400 text-xs sm:text-sm">FM</p>
         </div>
-        <div
-            class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 text-center">
-            <span class="text-2xl font-bold text-cyan-400">Mapiri</span>
-            <p class="text-gray-400 text-sm">Cobertura</p>
+        <div class="bg-[#0a0a14] border border-white/5 rounded-2xl p-4 sm:p-6 text-center">
+            <span class="text-xl sm:text-2xl font-bold text-cyan-400">Mapiri</span>
+            <p class="text-gray-400 text-xs sm:text-sm">Cobertura</p>
         </div>
-        <div
-            class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 text-center">
-            <span class="text-2xl font-bold text-cyan-400">🎵</span>
-            <p class="text-gray-400 text-sm">Tropical</p>
+        <div class="bg-[#0a0a14] border border-white/5 rounded-2xl p-4 sm:p-6 text-center">
+            <span class="text-xl sm:text-2xl font-bold text-cyan-400">🎵</span>
+            <p class="text-gray-400 text-xs sm:text-sm">Tropical</p>
         </div>
     </div>
 
     <!-- Programas destacados -->
-    <div class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6">
-        <h3 class="font-heading text-xl font-bold mb-4">📻 Programas
-            destacados</h3>
-        <div class="space-y-3">
-            <div
-                class="flex items-center justify-between p-3 bg-white/5 rounded-xl">
+    <div class="bg-[#0a0a14] border border-white/5 rounded-2xl p-4 sm:p-6">
+        <h3 class="font-heading text-lg sm:text-xl font-bold mb-3 sm:mb-4">📻 Programas destacados</h3>
+        <div class="space-y-2 sm:space-y-3">
+            <div class="flex items-center justify-between p-2.5 sm:p-3 bg-white/5 rounded-xl">
                 <div>
-                    <span class="font-medium text-white">Ritmo Caribeño</span>
-                    <p class="text-gray-400 text-sm">Salsa · Merengue ·
-                        Bachata</p>
+                    <span class="font-medium text-white text-sm sm:text-base">Ritmo Caribeño</span>
+                    <p class="text-gray-400 text-xs sm:text-sm">Salsa · Merengue · Bachata</p>
                 </div>
                 <span class="text-xs text-cyan-400">En vivo</span>
             </div>
-            <div
-                class="flex items-center justify-between p-3 bg-white/5 rounded-xl">
+            <div class="flex items-center justify-between p-2.5 sm:p-3 bg-white/5 rounded-xl">
                 <div>
-                    <span class="font-medium text-white">Despertar
-                        Tropical</span>
-                    <p class="text-gray-400 text-sm">Música para empezar el
-                        día</p>
+                    <span class="font-medium text-white text-sm sm:text-base">Despertar Tropical</span>
+                    <p class="text-gray-400 text-xs sm:text-sm">Música para empezar el día</p>
                 </div>
                 <span class="text-xs text-gray-500">07:00 AM</span>
             </div>
-            <div
-                class="flex items-center justify-between p-3 bg-white/5 rounded-xl">
+            <div class="flex items-center justify-between p-2.5 sm:p-3 bg-white/5 rounded-xl">
                 <div>
-                    <span class="font-medium text-white">Salsa Clásica</span>
-                    <p class="text-gray-400 text-sm">Los mejores éxitos de
-                        salsa</p>
+                    <span class="font-medium text-white text-sm sm:text-base">Salsa Clásica</span>
+                    <p class="text-gray-400 text-xs sm:text-sm">Los mejores éxitos de salsa</p>
                 </div>
                 <span class="text-xs text-gray-500">10:30 AM</span>
             </div>
