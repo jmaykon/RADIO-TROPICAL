@@ -18,9 +18,9 @@
             </div>
         </div>
 
-        <!-- Derecha: Botón Play -->
+        <!-- Derecha: Botón Play (más grande en móvil) -->
         <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0 pl-1">
-            <span class="action-label hidden sm:block">Escuchar ahora</span>
+            <span class="action-label">Escuchar ahora</span>
             <button id="fabRadio" class="play-btn" aria-label="Reproducir / Pausar">
                 <span id="btnIconContainer" class="flex items-center justify-center">
                     <i id="fabIcon" class="fas fa-play"></i>
@@ -37,7 +37,6 @@
         if (window._footerInitialized) return;
         window._footerInitialized = true;
 
-        // Esperar a que el DOM esté listo
         setTimeout(function() {
             const fabRadio = document.getElementById('fabRadio');
             const fabIcon = document.getElementById('fabIcon');
@@ -53,7 +52,6 @@
             let currentTrackIndex = 0;
             let audioPlayer = null;
 
-            // --- URLs de stream ---
             const streams = [
                 { title: 'Ritmo Caribeño', artist: 'Salsa · Merengue', url: 'https://stream-152.zeno.fm/2xr1kh0qp0hvv' },
                 { title: 'Salsa Brava', artist: 'Grupo Niche', url: 'https://stream-153.zeno.fm/7r1kgh0qp0hvv' },
@@ -155,13 +153,9 @@
                 document.dispatchEvent(new CustomEvent('playStateChanged', { detail: { isPlaying } }));
             }
 
-            // Evento click
             fabRadio.addEventListener('click', togglePlay);
-
-            // Inicializar estado
             updateFloatingStatus();
 
-            // --- Exponer controles globales ---
             window.radioControls = {
                 toggle: togglePlay,
                 play: togglePlay,
@@ -172,6 +166,6 @@
             };
 
             console.log('📻 Reproductor flotante inicializado');
-        }, 100); // Pequeño delay para asegurar que el DOM esté listo
+        }, 100);
     })();
 </script>
