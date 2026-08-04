@@ -1,61 +1,147 @@
 <div class="space-y-6">
-    <h1 class="text-3xl font-heading font-bold">📬 Contacto</h1>
-    <p class="text-gray-400">¿Quieres comunicarte con nosotros? ¡Escríbenos!</p>
-    
-    <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 space-y-4">
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+    <!-- Encabezado -->
+    <div
+        class="flex flex-wrap items-end justify-between gap-4 border-b border-white/5 pb-5">
+        <div>
+            <h1 class="text-3xl font-heading font-bold flex items-center gap-3">
+                <span
+                    class="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">📬
+                    Contacto</span>
+                <span
+                    class="text-sm font-normal text-purple-300/60 bg-purple-500/10 px-3 py-1 rounded-full">Palos
+                    Blancos</span>
+            </h1>
+            <p class="text-gray-400 mt-1 flex items-center gap-2">
+                <span
+                    class="w-1.5 h-1.5 rounded-full bg-purple-400/60 inline-block"></span>
+                ¿Quieres comunicarte con nosotros? ¡Escríbenos!
+            </p>
+        </div>
+        <div
+            class="flex items-center gap-2 text-sm text-gray-500 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+            <i class="fas fa-headset text-purple-400"></i>
+            <span>disponibles 24/7</span>
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-1 max-w-3xl mx-auto gap-6">
+        <!-- Columna única: Información de contacto completa -->
+        <div
+            class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6 space-y-5 hover:border-purple-500/20 transition-all duration-300">
+
+            <!-- Teléfono -->
+            <div class="flex items-center gap-4 group">
+                <div
+                    class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/30 group-hover:text-purple-300 transition-all duration-300">
                     <i class="fas fa-phone text-xl"></i>
                 </div>
                 <div>
                     <p class="text-sm text-gray-400">Teléfono</p>
-                    <p class="font-medium text-white">+591 2 123 4567</p>
+                    <p class="font-medium text-white flex items-center gap-2">
+                        <i
+                            class="fas fa-phone-alt text-purple-400/60 text-xs"></i>
+                        <a href="tel:+59177770097"
+                            class="hover:text-purple-400 transition-colors">+591
+                            77770097</a>
+                    </p>
                 </div>
             </div>
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+
+            <!-- Email -->
+            <div class="flex items-center gap-4 group">
+                <div
+                    class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/30 group-hover:text-purple-300 transition-all duration-300">
                     <i class="fas fa-envelope text-xl"></i>
                 </div>
                 <div>
                     <p class="text-sm text-gray-400">Email</p>
-                    <p class="font-medium text-white">info@radiotropical.com</p>
+                    <p class="font-medium text-white flex items-center gap-2">
+                        <i class="fas fa-at text-purple-400/60 text-xs"></i>
+                        <a href="mailto:info@palosblancos.bo"
+                            class="hover:text-purple-400 transition-colors">info@palosblancos.bo</a>
+                    </p>
                 </div>
             </div>
-            <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+
+            <!-- WhatsApp -->
+            <div class="flex items-center gap-4 group">
+                <div
+                    class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 group-hover:bg-green-500/30 group-hover:text-green-300 transition-all duration-300">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-400">WhatsApp</p>
+                    <p class="font-medium text-white flex items-center gap-2">
+                        <i
+                            class="fab fa-whatsapp text-green-400/60 text-xs"></i>
+                        <a href="https://wa.me/59177770097" target="_blank"
+                            class="hover:text-green-400 transition-colors">+591
+                            777 70097</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Dirección en texto -->
+            <div class="flex items-center gap-4 group">
+                <div
+                    class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500/30 group-hover:text-purple-300 transition-all duration-300">
                     <i class="fas fa-map-marker-alt text-xl"></i>
                 </div>
                 <div>
                     <p class="text-sm text-gray-400">Dirección</p>
-                    <p class="font-medium text-white">Mapiri, La Paz - Bolivia</p>
+                    <p class="font-medium text-white flex items-center gap-2">
+                        <i
+                            class="fas fa-location-dot text-purple-400/60 text-xs"></i>
+                        Av. Principal Palos Blancos - La Paz - Bolivia
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- Mapa de la dirección con coordenadas exactas - Capa satelital a color -->
+            <div
+                class="rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all duration-300">
+                <iframe
+                    src="https://www.google.com/maps?q=-15.588937,-67.249346&z=16&output=embed&t=k"
+                    width="100%"
+                    height="480"
+                    style="border:0; filter: none;"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <!-- Horarios de atención -->
+            <div
+                class="bg-white/5 rounded-xl p-4 border border-white/5 hover:border-purple-500/20 transition-all duration-300">
+                <div class="flex items-center gap-3 mb-3">
+                    <div
+                        class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+                        <i class="fas fa-clock text-lg"></i>
+                    </div>
+                    <h5 class="font-bold text-white">Horarios de Atención</h5>
+                </div>
+                <div class="space-y-2 text-sm">
+                    <div
+                        class="flex justify-between items-center border-b border-white/5 pb-2">
+                        <span class="text-gray-400">Lunes a Viernes</span>
+                        <span class="text-white font-medium">8:00 AM - 10:00
+                            PM</span>
+                    </div>
+                    <div
+                        class="flex justify-between items-center border-b border-white/5 pb-2">
+                        <span class="text-gray-400">Sábados</span>
+                        <span class="text-white font-medium">9:00 AM - 8:00
+                            PM</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400">Domingos</span>
+                        <span class="text-white font-medium">10:00 AM - 6:00
+                            PM</span>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="bg-[#0a0a14] border border-white/5 rounded-2xl p-6">
-            <h4 class="font-heading text-lg font-bold mb-4">Envíanos un mensaje</h4>
-            <form class="space-y-4" id="contactForm">
-                <input type="text" placeholder="Tu nombre" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors">
-                <input type="email" placeholder="Tu email" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors">
-                <textarea rows="4" placeholder="Mensaje" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition-colors resize-none"></textarea>
-                <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-cyan-600 to-cyan-400 rounded-xl font-bold text-white hover:scale-105 transition-transform shadow-lg shadow-cyan-500/30">
-                    <i class="fas fa-paper-plane"></i> Enviar mensaje
-                </button>
-            </form>
-        </div>
     </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('contactForm');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.');
-                form.reset();
-            });
-        }
-    });
-</script>
+<br><br><br><br><br><br><br>
