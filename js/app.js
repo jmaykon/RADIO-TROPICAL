@@ -1,140 +1,96 @@
-(function () {
-    "use strict";
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.lucide) { 
+        lucide.createIcons(); 
+    }
 
-    if (window._footerInitialized) return;
-    window._footerInitialized = true;
+    const audio = document.getElementById('radioPlayer');
+    const playBtn = document.getElementById('playBtn');
+    const btnIconContainer = document.getElementById('btnIconContainer');
+    const statusText = document.getElementById('statusText');
+    const liveIndicator = document.getElementById('liveIndicator');
+    const actionLabel = document.getElementById('actionLabel');
+    
+    // Validación de seguridad por si algún elemento no carga en la vista
+    if (!audio || !playBtn) {
+        console.warn("Reproductor de radio no detectado en esta página.");
+        return;
+    }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const fabRadio = document.getElementById('fabRadio');
-        const fabIcon = document.getElementById('fabIcon');
-        const loadingRing = document.getElementById('loadingRing');
-        const liveIndicatorFloat = document.getElementById('liveIndicatorFloat');
-        const statusTextFloat = document.getElementById('statusTextFloat');
-        const actionLabel = document.getElementById('actionLabel');
-        const audio = document.getElementById('radioAudio');
+    let isPlaying = false;
+    const streamUrl = "https://jazlynn-commenceable-nonaristocratically.ngrok-free.dev/radiotropical";
 
-        if (!fabRadio || !audio) {
-            console.warn('Elementos del reproductor no encontrados en el DOM.');
-            return;
+    // Función para cambiar iconos de Lucide dinámicamente
+    const setIcon = (name, extraClass = "") => {
+        if (!btnIconContainer) return;
+        btnIconContainer.innerHTML = `<i data-lucide="${name}" class="${extraClass} fill-current w-6 h-6 md:w-8 md:h-8"></i>`;
+        if (window.lucide) { 
+            lucide.createIcons(); 
         }
+    };
 
-        let isPlaying = false;
+    playBtn.addEventListener('click', function() {
+        if (!isPlaying) {
+            // 1. ESTADO: CONECTANDO
+            if (statusText) {
+                statusText.innerText = "Conectando...";
+                statusText.style.color = "#fbbf24"; // Amarillo
+            }
+            if (actionLabel) {
+                actionLabel.innerText = "Cargando...";
+            }
+            setIcon("loader", "animate-spin");
 
-        // Eventos del elemento de audio
-        audio.addEventListener('waiting', () => {
-            if (loadingRing) loadingRing.classList.remove('hidden');
-            if (fabIcon) fabIcon.className = 'fas fa-circle-notch fa-spin';
-            if (statusTextFloat) statusTextFloat.textContent = 'Conectando...';
-        });
-
-        audio.addEventListener('playing', () => {
-            isPlaying = true;
-            updateUI();
-        });
-
-        audio.addEventListener('pause', () => {
-            isPlaying = false;
-            updateUI();
-        });
-
-        audio.addEventListener('error', () => {
-            isPlaying = false;
-            if (loadingRing) loadingRing.classList.add('hidden');
-            if (fabIcon) fabIcon.className = 'fas fa-exclamation-triangle text-red-400';
-            if (statusTextFloat) statusTextFloat.textContent = 'Fuera de línea';
-            if (actionLabel) actionLabel.textContent = 'Sin señal';
-            if (liveIndicatorFloat) liveIndicatorFloat.classList.remove('on', 'active');
-        });
-
-        function updateUI() {
-            if (loadingRing) loadingRing.classList.add('hidden');
+            audio.src = streamUrl + "?t=" + new Date().getTime();
             
-            if (isPlaying) {
-                if (fabIcon) fabIcon.className = 'fas fa-pause';
-                if (statusTextFloat) {
-                    statusTextFloat.textContent = 'En línea';
-                    statusTextFloat.classList.add('on');
+            audio.play().then(() => {
+                // 2. ESTADO: REPRODUCIENDO
+                isPlaying = true;
+                if (statusText) {
+                    statusText.innerText = "En Vivo Ahora";
+                    statusText.style.color = "#22d3ee"; // Cian
                 }
-                if (actionLabel) actionLabel.textContent = 'Pausar';
-                if (liveIndicatorFloat) liveIndicatorFloat.classList.add('on', 'active');
-            } else {
-                if (fabIcon) fabIcon.className = 'fas fa-play';
-                if (statusTextFloat) {
-                    statusTextFloat.textContent = 'Señal Digital';
-                    statusTextFloat.classList.remove('on');
+                if (liveIndicator) {
+                    liveIndicator.className = "h-2 w-2 rounded-full bg-cyan-400 animate-pulse";
                 }
-                if (actionLabel) actionLabel.textContent = 'Escuchar ahora';
-                if (liveIndicatorFloat) liveIndicatorFloat.classList.remove('on', 'active');
-            }
-        }
-
-        // Control del Clic en el Botón Play
-        fabRadio.addEventListener('click', function () {
-            if (audio.paused) {
-                if (loadingRing) loadingRing.classList.remove('hidden');
-                if (fabIcon) fabIcon.className = 'fas fa-circle-notch fa-spin';
-                if (statusTextFloat) statusTextFloat.textContent = 'Conectando...';
-
-                // Forzamos la recarga del stream para evitar caché
-                audio.src = "https://jazlynn-commenceable-nonaristocratically.ngrok-free.dev/radiotropical?t=" + new Date().getTime();
-                
-                audio.play().catch(error => {
-                    console.error("Error al reproducir:", error);
-                    if (loadingRing) loadingRing.classList.add('hidden');
-                    if (fabIcon) fabIcon.className = 'fas fa-play';
-                    if (statusTextFloat) statusTextFloat.textContent = 'Fuera de línea';
-                    if (actionLabel) actionLabel.textContent = 'Sin señal';
-                });
-            } else {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-        });
-    });
-
-    // --- Control de navegación por HTMX y Menú Móvil ---
-    document.addEventListener('DOMContentLoaded', function () {
-        document.addEventListener('click', function (e) {
-            const link = e.target.closest('a[data-page]');
-            if (link) {
-                e.preventDefault();
-                const page = link.dataset.page;
-                const content = document.getElementById('pageContent');
-
-                if (content && window.htmx) {
-                    htmx.ajax('GET', `pages/${page}.html`, {
-                        target: '#pageContent',
-                        swap: 'innerHTML',
-                        history: true
-                    });
+                if (actionLabel) {
+                    actionLabel.innerText = "Reproduciendo";
                 }
-
-                const mobileMenu = document.getElementById('mobileMenu');
-                if (mobileMenu) {
-                    mobileMenu.classList.add('translate-x-full');
-                    mobileMenu.classList.remove('translate-x-0');
+                setIcon("pause");
+            }).catch(err => {
+                // 3. ESTADO: ERROR (Fuera de línea / Sin señal)
+                console.error("Error de streaming:", err);
+                isPlaying = false;
+                if (statusText) {
+                    statusText.innerText = "Fuera de línea";
+                    statusText.style.color = "#ef4444"; // Rojo
                 }
-            }
-        });
-
-        const menuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', function (e) {
-                e.stopPropagation();
-                mobileMenu.classList.toggle('translate-x-full');
-                mobileMenu.classList.toggle('translate-x-0');
+                if (liveIndicator) {
+                    liveIndicator.className = "h-2 w-2 rounded-full bg-red-500";
+                }
+                if (actionLabel) {
+                    actionLabel.innerText = "Fuera de línea";
+                }
+                setIcon("play", "ml-1");
+                audio.src = ""; 
             });
-        }
 
-        if (mobileMenuClose && mobileMenu) {
-            mobileMenuClose.addEventListener('click', function (e) {
-                e.stopPropagation();
-                mobileMenu.classList.add('translate-x-full');
-                mobileMenu.classList.remove('translate-x-0');
-            });
+        } else {
+            // 4. ESTADO: DETENER / PAUSAR
+            audio.pause();
+            audio.src = ""; 
+            isPlaying = false;
+            
+            if (statusText) {
+                statusText.innerText = "Señal Digital";
+                statusText.style.color = "#9ca3af"; // Gris
+            }
+            if (liveIndicator) {
+                liveIndicator.className = "h-2 w-2 rounded-full bg-gray-500";
+            }
+            if (actionLabel) {
+                actionLabel.innerText = "Escuchar ahora";
+            }
+            setIcon("play", "ml-1");
         }
     });
-})();
+});
