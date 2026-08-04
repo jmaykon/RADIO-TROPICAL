@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="es" class="dark">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>Radio Tropical 87.9 FM</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
-    
-    <!-- Bootstrap 5 CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        <title>Radio Tropical 87.9 FM</title>
 
-    <!-- Tailwind CSS CDN (Mantiene la compatibilidad con tus clases existentes) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
+            rel="stylesheet" />
+
+        <!-- Bootstrap 5 CSS CDN -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+        <!-- Tailwind CSS CDN (Mantiene la compatibilidad con tus clases existentes) -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -34,17 +39,18 @@
             }
         }
     </script>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    
-    <!-- HTMX -->
-    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
-    
-    <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="css/style.css" />
 
-    <style>
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+        <!-- HTMX -->
+        <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+
+        <!-- CSS Personalizado -->
+        <link rel="stylesheet" href="css/style.css" />
+
+        <style>
         /* ============================================================
            BACKGROUND GALAXY PREMIUM (Estilo Nebula / Espacio Profundo)
            ============================================================ */
@@ -73,49 +79,66 @@
             opacity: 0.25;
         }
     </style>
-</head>
-<body class="text-slate-100 font-sans min-h-screen d-flex flex-column antialiased">
+    </head>
+    <body
+        class="text-slate-100 font-sans min-h-screen d-flex flex-column antialiased">
 
-    <!-- ====== NAVBAR ====== -->
-    <header class="w-full position-relative z-4">
-        <div id="navbar" hx-get="components/navbar.html" hx-trigger="load" hx-swap="innerHTML"></div>
-    </header>
+        <!-- ====== NAVBAR ====== -->
+        <header class="w-full position-relative z-4">
+            <div id="navbar" hx-get="components/navbar.html" hx-trigger="load"
+                hx-swap="innerHTML"></div>
+        </header>
 
-    <!-- ====== MENÚ MÓVIL ====== -->
-    <div id="mobileMenu" class="fixed inset-y-0 right-0 w-72 bg-[#0a0b14]/95 backdrop-blur-2xl border-l border-white/10 z-[100] transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl d-flex flex-column">
-        <div class="d-flex align-items-center justify-content-between p-4 border-bottom border-white/10">
-            <span class="font-heading text-lg font-bold tracking-wider text-white">RADIO <span class="text-cyan-400">TROPICAL</span></span>
-            <button id="mobileMenuClose" class="text-gray-400 hover:text-white p-2 rounded-lg bg-white/5 border border-white/10 transition-colors">
-                <i class="fas fa-times text-lg"></i>
-            </button>
+        <!-- ====== MENÚ MÓVIL ====== -->
+        <div id="mobileMenu"
+            class="fixed inset-y-0 right-0 w-72 bg-[#0a0b14]/95 backdrop-blur-2xl border-l border-white/10 z-[100] transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl d-flex flex-column">
+            <div
+                class="d-flex align-items-center justify-content-between p-4 border-bottom border-white/10">
+                <span
+                    class="font-heading text-lg font-bold tracking-wider text-white">RADIO
+                    <span class="text-cyan-400">TROPICAL</span></span>
+                <button id="mobileMenuClose"
+                    class="text-gray-400 hover:text-white p-2 rounded-lg bg-white/5 border border-white/10 transition-colors">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+            <nav
+                class="d-flex flex-column p-4 gap-3 flex-grow-1 overflow-y-auto">
+                <a href="#" data-page="inicio"
+                    class="mobile-link text-gray-300 hover:text-cyan-400 font-medium py-2 border-bottom border-white/5 text-decoration-none transition-colors">Inicio</a>
+                <a href="#" data-page="programacion"
+                    class="mobile-link text-gray-300 hover:text-cyan-400 font-medium py-2 border-bottom border-white/5 text-decoration-none transition-colors">Programación</a>
+                <a href="#" data-page="contactos"
+                    class="mobile-link text-gray-300 hover:text-cyan-400 font-medium py-2 border-bottom border-white/5 text-decoration-none transition-colors">Contacto</a>
+            </nav>
+            <div
+                class="p-4 border-top border-white/10 text-center text-xs text-gray-500">
+                Palos Blancos, La Paz - Bolivia 📡 87.9 FM
+            </div>
         </div>
-        <nav class="d-flex flex-column p-4 gap-3 flex-grow-1 overflow-y-auto">
-            <a href="#" data-page="inicio" class="mobile-link text-gray-300 hover:text-cyan-400 font-medium py-2 border-bottom border-white/5 text-decoration-none transition-colors">Inicio</a>
-            <a href="#" data-page="programacion" class="mobile-link text-gray-300 hover:text-cyan-400 font-medium py-2 border-bottom border-white/5 text-decoration-none transition-colors">Programación</a>
-            <a href="#" data-page="contactos" class="mobile-link text-gray-300 hover:text-cyan-400 font-medium py-2 border-bottom border-white/5 text-decoration-none transition-colors">Contacto</a>
-        </nav>
-        <div class="p-4 border-top border-white/10 text-center text-xs text-gray-500">
-            Palos Blancos, La Paz - Bolivia 📡 87.9 FM
-        </div>
-    </div>
 
-    <!-- ====== CONTENIDO PRINCIPAL ====== -->
-    <main class="flex-grow-1 w-100 max-w-7xl mx-auto px-3 px-sm-4 py-4 py-md-5 position-relative z-2">
-        <div id="pageContent" hx-get="pages/inicio.html" hx-trigger="load" hx-swap="innerHTML">
-            <!-- Contenido cargado vía HTMX -->
-        </div>
-    </main>
+        <!-- ====== CONTENIDO PRINCIPAL ====== -->
+        <main
+            class="flex-grow-1 w-100 max-w-7xl mx-auto px-3 px-sm-4 py-4 py-md-5 position-relative z-2">
+            <div id="pageContent" hx-get="pages/inicio.html" hx-trigger="load"
+                hx-swap="innerHTML">
+                <!-- Contenido cargado vía HTMX -->
+            </div>
+        </main>
 
-    <!-- ====== FOOTER FLOTANTE (REPRODUCTOR) ====== -->
-    <div id="footerFab" hx-get="components/footer.html" hx-trigger="load" hx-swap="innerHTML"></div>
+        <!-- ====== FOOTER FLOTANTE (REPRODUCTOR) ====== -->
+        <div id="footerFab" hx-get="components/footer.html" hx-trigger="load"
+            hx-swap="innerHTML"></div>
 
-    <!-- ====== REPRODUCTOR DE AUDIO GLOBAL ====== -->
-    <audio id="radioPlayer" preload="none"></audio>
+        <!-- ====== REPRODUCTOR DE AUDIO GLOBAL ====== -->
+        <audio id="radioPlayer" preload="none"></audio>
 
-    <!-- Bootstrap 5 JS Bundle CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- ====== JAVASCRIPT ====== -->
-    <script src="js/app.js"></script>
-</body>
+        <!-- Bootstrap 5 JS Bundle CDN -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- ====== JAVASCRIPT ====== -->
+        <script src="js/app.js"></script>
+    </body>
 </html>
